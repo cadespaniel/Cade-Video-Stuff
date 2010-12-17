@@ -1,0 +1,6 @@
+/home/patrick/ScenePainter/scenes/cade/rendered/base_scene3.png
+/home/patrick/ScenePainter/scenes/cade/rendered/base_scene5.png
+/home/patrick/ScenePainter/scenes/cade/rendered/base_scene_1.png
+/home/patrick/ScenePainter/scenes/cade/rendered/base_scene_2.png
+/home/patrick/ScenePainter/scenes/cade/rendered/base_scene_6.png
+/home/patrick/ScenePainter/scenes/cade/rendered/black_border.png

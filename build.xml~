@@ -1,0 +1,42 @@
+<project name="Mass_export" default="all" basedir=".">
+  <description>Render all scenes of the cade intent video</description>
+ 
+  <!-- Config time -->
+ 
+  <!-- Path to a ScenePainter config file that loads YPP -->
+  <property name="config" value="${user.home}/ScenePainter/default.cfg" />
+ 
+  <!-- Directory, containing the scenes to export -->
+  <property name="srcdir" value="${basedir}" />
+ 
+  <!-- Where to dump exported scenes -->
+  <property name="destdir" value="${basedir}/rendered" />
+ 
+  <!-- Optionally crop all scenes to a standard size -->
+  <property name="crop" value="0,0,640,480" />
+  
+  <property name="fps" value="25" />
+  <property name="duration" value="40" />
+  <property name="mencoder" value="/usr/bin/mencoder" />
+  
+  <target name="all" depends="export,combine" />
+ 
+  <target name="export" >
+ 
+    <taskdef name="exporter" classname="de.onyxbits.scenepainter.util.RenderTask" />
+ 
+    <exporter fps="${fps}" duration="${duration}" config="${config}" crop="${crop}" destdir="${destdir}" >
+ 
+      <fileset dir="${srcdir}" >  
+        <include name="**/*.scc"/>
+      </fileset>
+    </exporter>
+  </target>
+  
+  <target name="combine">
+    <exec executable="${mencoder}">
+      <arg line="mf://rendered/scene_1/*.png -mf w=640:h=480:fps=25:type=png -ovc copy -o sequence1.avi" />
+    </exec>
+     
+  </target>
+</project>
